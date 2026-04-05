@@ -1,0 +1,26 @@
+services:
+  # 1. The Backend
+  - type: web
+    name: cityease-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: MONGO_URI # Add your MongoDB string here if you have one
+        sync: false
+
+  # 2. The Frontend
+  - type: static
+    name: cityease-client
+    runtime: static
+    rootDir: frontend
+    publishPath: .
+    envVars:
+      - key: CITYEASE_API_BASE
+        fromService:
+          type: web
+          name: cityease-api
+          property: host
