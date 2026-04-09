@@ -1,6 +1,6 @@
 
 // Simple API integration for CityEase frontend
-const API_BASE = (window.CITYEASE_API_BASE || 'http://localhost:3000');
+const API_BASE = "https://cityease-backend-aiot.onrender.com";
 
 function setError(el, msg) {
   if (!el) return alert(msg);
